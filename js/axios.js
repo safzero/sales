@@ -68,7 +68,7 @@ form.addEventListener('submit', function(element) {
 
     axios.put(urlMilestonesDelete+dataRequest.id,dataRequest,{headers})
     .then((respuesta) => {console.log(respuesta);
-        window.location.assign('http://localhost:8080/sales/milestones.html')})
+        window.location.assign('milestones.html')})
     .catch(error => console.log(error))
 
 })
@@ -101,7 +101,7 @@ function borrar ()
             let response = respuesta.data;
             console.log(response);
             borrarMilestoneId=0;
-            window.location.assign('http://localhost:8080/sales/milestones.html');
+            window.location.assign('milestones.html');
         })
         .catch((error) => {
             console.log(error)
@@ -116,5 +116,5 @@ function borrar ()
 
 function goals(milestoneId)
 {
-    window.location.assign('http://localhost:8080/sales/goals-milestone.html?milestoneId='+milestoneId);
+    window.location.assign('goals-milestone.html?milestoneId='+milestoneId);
 }

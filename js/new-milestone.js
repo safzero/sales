@@ -22,7 +22,7 @@ form.addEventListener('submit', function(element) {
 
     axios.post(urlMilestones,dataRequest,{headers})
     .then((respuesta) => {console.log(respuesta);
-        window.location.assign('http://localhost:8080/sales/milestones.html')})
+        window.location.assign('milestones.html')})
     .catch(error => console.log(error))
 
 })
