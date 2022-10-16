@@ -49,13 +49,9 @@ axios.get(urlMilestones,{headers})
 })
 
 const form = document.getElementById('form-update-milestone');
-console.log(form);
 form.addEventListener('submit', function(element) {
-    console.log(form);
     element.preventDefault();
     const formData = new FormData(form);
-    console.log([...formData]);
-    console.log(formData.get('name'));
     
     const dataRequest = {
         "id":formData.get('id'),
