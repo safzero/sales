@@ -39,7 +39,7 @@ axios.get(urlMilestones,{headers})
         filas += `<tr><td>${element.name}</td><td>${fechaI}</td><td>${fechaF}</td><td>${element.progress}</td><td>
         <i onclick="previoBorrar(${element.id})" data-toggle='modal' data-target='#deleteModal' 
         class='fas fa-trash fa-sm fa-fw mr-2 text-gray-400'></i> <i onclick="visualizar(${element.id})" data-toggle='modal' data-target='#updateModal' 
-        class='fas fa-pen fa-sm fa-fw mr-2 text-gray-400'></i></td></tr>`;
+        class='fas fa-pen fa-sm fa-fw mr-2 text-gray-400'></i><i onclick="goals(${element.id})" class='fas fa-bullseye fa-sm fa-fw mr-2 text-gray-400'></i></td></tr>`;
     });
     tabla+=filas+finTabla;
     document.getElementById('cuerpo').innerHTML=tabla;
@@ -112,4 +112,9 @@ function borrar ()
         console.log("No existe milestone");
     }
    
+}
+
+function goals(milestoneId)
+{
+    window.location.assign('http://localhost:8080/sales/goals-milestone.html?milestoneId='+milestoneId);
 }
