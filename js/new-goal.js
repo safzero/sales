@@ -1,4 +1,5 @@
 const urlGoals='http://ligafalm.eu:28100/goals';
+const urlUsers = 'http://ligafalm.eu:28100/users';
 const headers = {
     'Content-Type':'application/json',
     'Access-Control-Allow-Origin': '*'
@@ -6,6 +7,20 @@ const headers = {
 };
 
 const form = document.getElementById('form-add-goal');
+let users;
+//Obtener usuarios para el select
+axios.get(urlUsers,{headers})
+.then((respuesta)=> {
+    users=respuesta.data;
+    let templateSelect =`<select class="form-control form-control-user" id="assignedTo" name="assignedTo">`;
+    users.forEach(element => {
+        templateSelect+=`<option value='${element.username}'>${element.username}</option>`;
+    });
+    templateSelect+=`</select>`;
+    document.getElementById("selectorUsuario").innerHTML=templateSelect;
+
+})
+
 form.addEventListener('submit', function(element) {
     element.preventDefault();
     const formData = new FormData(form);
