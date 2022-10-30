@@ -73,7 +73,7 @@
                 </a>
                 <div id="milestonePages" class="collapse" aria-labelledby="headingMilestones" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item active" href="milestones.html">All</a>
+                        <a class="collapse-item" href="milestones.html">All</a>
                         <a class="collapse-item" href="new-milestone.html">Add new</a>                       
                     </div>
                 </div>
@@ -327,7 +327,7 @@
                     
                     <!-- Page Heading -->
                     <h1 class="h3 mb-2 text-gray-800">Goals</h1>
-                    <p class="mb-4">Milestones del usuario xxx.</p>
+                    <p class="mb-4">Administración de goals</p>
                             
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
@@ -374,26 +374,25 @@
      <div class="modal-dialog" role="document">
          <div class="modal-content">
              <div class="modal-header">
-                 <h5 class="modal-title" id="exampleModalLabel">Update milestone</h5>
+                 <h5 class="modal-title" id="exampleModalLabel">Update goal</h5>
                  <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                      <span aria-hidden="true">×</span>
                  </button>
              </div>
              <div class="modal-body">
-                <form id="form-update-milestone">
+                <form id="form-update-goal">
                             <div class="form-group" style="display:none;">
                                 <input type="text" class="form-control form-control-user" id="id" name="id" />
                             </div>
                             <div class="form-group">
-                                <input type="text" class="form-control form-control-user" id="name" name="name" placeholder="Milestone name" />
+                                <input type="text" class="form-control form-control-user" id="name" name="name" placeholder="Goal name" />
                             </div>
                             <div class="form-group">
-                                Start: 
-                                <input type="datetime-local" class="form-control form-control-user" id="start" name="start" placeholder="Start" />
+                                <input type="text" class="form-control form-control-user" id="description" name="description" placeholder="Goal description" />
                             </div>
                             <div class="form-group">
-                                End: 
-                                <input type="datetime-local" class="form-control form-control-user" id="end" name="end" placeholder="End" />
+                                Assigned user: 
+                                <div id="selectorUsuario"></div>
                             </div>
                        
                 

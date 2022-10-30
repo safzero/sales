@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Goals Milestone</title>
+    <title>Goals Transactions</title>
 
     <!-- Custom fonts for this template -->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -326,24 +326,24 @@
                 <div class="container-fluid">
                     
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Milestones & Goals</h1>
+                    <h1 class="h3 mb-2 text-gray-800">Goals Transactions</h1>
                     <p class="mb-4"></p>
                             
                     <!-- Milestone data -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Milestone data</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Goal data</h6>
                         </div>
                         <div class="card-body">
-                            <div id="milestoneID" style="display:none;"></div>
+                            <div id="goalID" style="display:none;"></div>
                             <div class="form-group">
-                                Nombre: <label id="milestone-name" class="label"></label>
+                                Nombre: <label id="goal-name" class="label"></label>
                             </div>
                             <div class="form-group">
-                                Start: <label id="milestone-start" class="label"></label>
+                                Descripción: <label id="goal-description" class="label"></label>
                             </div>
                             <div class="form-group">
-                                End: <label id="milestone-end" class="label"></label>
+                                Assigned to: <label id="goal-assignedTo" class="label"></label>
                             </div>
                         </div>
                     </div>
@@ -351,8 +351,8 @@
                     <!-- Goals of milestone -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary" style="float:left;">Goals of Milestone</h6>
-                            <button type="button" id="bt_newMilestone" data-toggle="modal" data-target="#newGoalModal" class="btn-xs btn-primary" style="float:right;"><i class="fas fa-plus"></i> Add goal</button>
+                            <h6 class="m-0 font-weight-bold text-primary" style="float:left;">Transactions</h6>
+                            <button type="button" id="bt_newMilestone" data-toggle="modal" data-target="#newGoalModal" class="btn-xs btn-primary" style="float:right;"><i class="fas fa-plus"></i> Add transaction</button>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -389,7 +389,7 @@
     </a>
 
      <!-- Update Modal-->
-     <div class="modal fade" id="updateGoalModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     <div class="modal fade" id="updateTransactionModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
      aria-hidden="true">
      <div class="modal-dialog" role="document">
          <div class="modal-content">
@@ -400,21 +400,18 @@
                  </button>
              </div>
              <div class="modal-body">
-                <form id="form-update-goal">
+                <form id="form-update-transaction">
                             <div class="form-group" style="display:none;">
-                                <input type="number" class="form-control form-control-user" id="goal-id" name="id" />
+                                <input type="number" class="form-control form-control-user" id="transaction-id" name="id" />
                             </div>
                             <div class="form-group">
-                                <input type="text" class="form-control form-control-user" id="goal-name" name="name" placeholder="Goal name" />
+                                <input type="text" class="form-control form-control-user" id="transaction-product" name="product" placeholder="Product Transaction" />
                             </div>
                             <div class="form-group">
-                                Description: 
-                                <input type="text" class="form-control form-control-user" id="goal-description" name="description" placeholder="Description" />
+                                Total Sell: 
+                                <input type="number" class="form-control form-control-user" id="transaction-total" name="total" placeholder="Total Sell" />
                             </div>
-                            <div class="form-group">
-                                Assigned to: 
-                                <input type="text" class="form-control form-control-user" id="goal-assigned" name="assigned" placeholder="Assigned to" />
-                            </div>
+                          
              </div>
              <div class="modal-footer">
                  <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
@@ -436,7 +433,7 @@
                       <span aria-hidden="true">×</span>
                   </button>
               </div>
-              <div class="modal-body">¿Seguro que deseas borrar este milestone?</div>
+              <div class="modal-body">¿Seguro que deseas borrar esta transacción?</div>
               <div class="modal-footer">
                   <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                   <a class="btn btn-primary" onclick="borrar()">Borrar</a>
@@ -451,24 +448,21 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">New goal</h5>
+                <h5 class="modal-title" id="exampleModalLabel">New transaction</h5>
                 <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
             </div>
             <div class="modal-body">
-               <form id="form-add-goal-milestone">
+               <form id="form-add-goal-transaction">
                     <div class="form-group">
-                        <input type="text" class="form-control form-control-user" id="name" name="name" placeholder="Goal name" />
+                        <input type="text" class="form-control form-control-user" id="product" name="product" placeholder="Product name" />
                     </div>
                     <div class="form-group">
-                        Description: 
-                        <input type="textarea" class="form-control form-control-user" id="description" name="description" placeholder="Description" />
+                        Total sell: 
+                        <input type="number" class="form-control form-control-user" id="total" name="total" />
                     </div>
-                    <div class="form-group">
-                        Assigned To: 
-                        <div id="selectorUsuario"></div>
-                    </div>
+                    
                     
             </div>
             <div class="modal-footer">
@@ -499,7 +493,7 @@
             </div>
         </div>
     </div>
-    <script src="js/goals-milestone.js"></script>
+    <script src="js/goal-transactions.js"></script>
     
 
     <!-- Bootstrap core JavaScript-->
