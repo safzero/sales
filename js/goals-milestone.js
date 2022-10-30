@@ -1,5 +1,13 @@
 const urlGoalsMilestone = 'http://ligafalm.eu:28100/milestones/';
+
+const urlGoals='http://ligafalm.eu:28100/goals';
 const urlGoal = 'http://ligafalm.eu:28100/goals/';
+const urlUsers = 'http://ligafalm.eu:28100/users';
+const urlMilestones = 'http://ligafalm.eu:28100/milestones';
+const urlGoalsUser = 'http://ligafalm.eu:28100/goals/user/';
+const urlGoalMilestoneRel = 'http://ligafalm.eu:28100/goals/milestone/';
+
+
 var transactions, retMilestoneId, progress;
 
 const headers = {
@@ -8,13 +16,72 @@ const headers = {
 
 };
 
+//Obtener usuarios para el select
+axios.get(urlUsers,{headers})
+.then((respuestaUsuarios)=> {
+    let users;
+    users=respuestaUsuarios.data;
+    let templateSelect =`<select class="form-control form-control-user" id="assignedTo" name="assignedTo">`;
+    users.forEach(element => {
+        templateSelect+=`<option value='${element.username}'>${element.username}</option>`;
+    });
+    templateSelect+=`</select>`;
+    document.getElementById("selectorUsuario").innerHTML=templateSelect;
+})
+
+//Nuevo goal y relación con milestone
+const formNewGoal = document.getElementById('form-add-goal-milestone');
+
+formNewGoal.addEventListener('submit', function(element) {
+    element.preventDefault();
+    const formDataNewGoal = new FormData(formNewGoal);
+    console.log(formDataNewGoal);
+
+    const dataRequestNewGoal = {
+        "name":formDataNewGoal.get('name'),
+        "description":formDataNewGoal.get('description'),
+        "assignedTo":formDataNewGoal.get('assignedTo')
+        }
+
+    //Obtengo goals del milestone seleccionado
+    let milestoneAsignado=document.getElementById("milestoneID").innerHTML;
+    let urlTest=urlMilestones+'/'+milestoneAsignado+'/goals';
+    var goalsIdMilestone=[];
+    axios.get(urlTest,{headers})
+    .then((responseIdsMilestone)=>{
+        responseIdsMilestone.data.goals.forEach(dataGoal => {
+            goalsIdMilestone.push(dataGoal.id);
+        });
+    })
+
+    axios.post(urlGoals,dataRequestNewGoal,{headers})
+    .then((respuesta) => {
+
+            goalsIdMilestone.push(respuesta.data);
+
+            const dataRelRequest ={
+                "idMilestone":milestoneAsignado,
+                "goals":goalsIdMilestone
+            };
+            
+            axios.put(urlGoalMilestoneRel + milestoneAsignado,dataRelRequest,{headers})
+            .then ((respuesta)=>{
+                console.log("Add rel" + respuesta.data);
+            })
+       
+
+        window.location.assign('milestones.html');
+    })
+})
+
+
 const form = document.getElementById('form-update-goal');
 form.addEventListener('submit', function(element) {
     element.preventDefault();
     const formData = new FormData(form);
     
     const dataRequest = {
-        "id":formData.get('id'),
+        "id":parseInt(formData.get('id')),
         "name":formData.get('name'),
         "description":formData.get('description'),
         "assignedTo":formData.get('assigned'),
@@ -41,7 +108,7 @@ const urlParams = new URLSearchParams(queryString);
 
 const milestoneId=urlParams.get('milestoneId');
 retMilestoneId=milestoneId;
-console.log(milestoneId);
+document.getElementById("milestoneID").innerHTML=milestoneId;
 getMilestone(milestoneId);
 
 axios.get(urlGoalsMilestone+milestoneId+'/goals',{headers})
