@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Blank</title>
+    <title>Sales - New transaction</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -60,64 +60,63 @@
             </div>
 
             <!-- Nav Item - Tables -->
-            <li class="nav-item active">
+            <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#milestonePages"
                     aria-expanded="true" aria-controls="milestonePages">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Milestones</span>
                 </a>
-                <div id="milestonePages" class="collapse show" aria-labelledby="headingMilestones" data-parent="#accordionSidebar">
+                <div id="milestonePages" class="collapse" aria-labelledby="headingMilestones" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="milestones.html">All</a>
-                        <a class="collapse-item active" href="new-milestone.html">Add new</a>                       
+                        <a class="collapse-item " href="milestones.html">All</a>
+                        <a class="collapse-item" href="new-milestone.html">Add new</a>                       
                     </div>
                 </div>
             </li>
+             <!-- Divider -->
+             <hr class="sidebar-divider d-none d-md-block">
+             <!-- Heading -->
+             <div class="sidebar-heading">
+                 Goals
+             </div>
+             <!-- Nav Item - Tables -->
+             <li class="nav-item active">
+                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#newGoalPage"
+                     aria-expanded="true" aria-controls="newGoalPage">
+                     <i class="fas fa-fw fa-table"></i>
+                     <span>Goals</span>
+                 </a>
+                 <div id="newGoalPage" class="collapse" aria-labelledby="headingGoalsPage" data-parent="#accordionSidebar">
+                     <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="goals.html">All</a>
+                         <a class="collapse-item" href="new-goal.html">Add new</a>
+                     </div>
+                 </div>
+             </li>
 
-            <!-- Divider -->
-           <hr class="sidebar-divider d-none d-md-block">
-           <!-- Heading -->
-           <div class="sidebar-heading">
-               Goals
-           </div>
-           <!-- Nav Item - Tables -->
-           <li class="nav-item">
-               <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#newGoalPage"
-                   aria-expanded="true" aria-controls="newGoalPage">
-                   <i class="fas fa-fw fa-table"></i>
-                   <span>Goals</span>
-               </a>
-               <div id="newGoalPage" class="collapse" aria-labelledby="headingGoalsPage" data-parent="#accordionSidebar">
-                   <div class="bg-white py-2 collapse-inner rounded">
-                    <a class="collapse-item" href="goals.html">All</a>
-                       <a class="collapse-item " href="new-goal.html">Add new</a>
-                   </div>
-               </div>
-           </li>
-
-            <!-- Divider -->
- <hr class="sidebar-divider">
+              <!-- Divider -->
+            <hr class="sidebar-divider">
 
 
- <!-- Heading -->
- <div class="sidebar-heading">
-     Transactions
- </div>
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Transactions
+            </div>
 
- <!-- Nav Item - Tables -->
- <li class="nav-item">
-     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#transactionsPages"
-         aria-expanded="true" aria-controls="transactionsPages">
-         <i class="fas fa-fw fa-table"></i>
-         <span>Transactions</span>
-     </a>
-     <div id="transactionsPages" class="collapse" aria-labelledby="headingTransactions" data-parent="#accordionSidebar">
-         <div class="bg-white py-2 collapse-inner rounded">
-             <a class="collapse-item" href="transactions.html">All</a>
-             <a class="collapse-item" href="new-transaction.html">Add new</a>                       
-         </div>
-     </div>
- </li>
+            <!-- Nav Item - Tables -->
+            <li class="nav-item active">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#transactionsPages"
+                    aria-expanded="true" aria-controls="transactionsPages">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Transactions</span>
+                </a>
+                <div id="transactionsPages" class="collapse show" aria-labelledby="headingTransactions" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="transactions.html">All</a>
+                        <a class="collapse-item active" href="new-transaction.html">Add new</a>                       
+                    </div>
+                </div>
+            </li>
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 
@@ -343,27 +342,28 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-4 text-gray-800">Add new Milestone</h1>
-                    <form id="form-add-milestone">
+                    <h1 class="h3 mb-4 text-gray-800">Add new transaction</h1>
+                    <form id="form-add-transaction">
                         <div class="card shadow mb-4">
                             <div class="card-header py-3">
-                                <h6 class="m-0 font-weight-bold text-primary">New Milestone</h6>
+                                <h6 class="m-0 font-weight-bold text-primary">New transaction</h6>
                             </div>
                             <div class="card-body">
                                 <div class="form-group">
-                                    <input type="text" class="form-control form-control-user" id="name" name="name" placeholder="Milestone name" />
+                                    <input type="text" class="form-control form-control-user" id="product" name="product" placeholder="Product transaction" />
                                 </div>
                                 <div class="form-group">
-                                    Start: 
-                                    <input type="datetime-local" class="form-control form-control-user" id="start" name="start" placeholder="Start" />
+                                    Total  vendido: 
+                                    <input type="number" class="form-control form-control-user" id="total" name="total" placeholder="Total Sell" />
                                 </div>
                                 <div class="form-group">
-                                    End: 
-                                    <input type="datetime-local" class="form-control form-control-user" id="end" name="end" placeholder="End" />
+                                    Selecciona el goal asignado: 
+                                    <div id="selectorGoal"></div>
                                 </div>
+                                
                             </div>
                             <div class="card-footer">
-                                <button type="submit" id="save-milestone" class="btn btn-primary">Save</button>
+                                <button type="submit" id="save-transaction" class="btn btn-primary">Save</button>
                             </div>
                         </div>
                        
@@ -428,7 +428,7 @@
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
 
-    <script src="js/new-milestone.js"></script>
+    <script src="js/new-transaction.js"></script>
 
 </body>
 
